@@ -5,13 +5,15 @@ import App from './App'
 import router from './router'
 import Element from 'element-ui'
 import myaxios from '@/assets/js/myaxios.js'
+import MyBread from '@/layout/bread.vue'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/index.css'
 
-Vue.config.productionTip = false
 Vue.use(myaxios)
 Vue.use(Element)
+Vue.component(MyBread.name, MyBread)
+Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
