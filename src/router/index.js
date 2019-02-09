@@ -7,6 +7,7 @@ import Rights from '@/components/page/rights/rights.vue'
 import Roles from '@/components/page/roles/roles.vue'
 import Goods from '@/components/page/goods/goods.vue'
 import GoodsAdd from '@/components/page/goods/add.vue'
+import Categories from '@/components/page/categories/categories.vue'
 
 import { Message } from 'element-ui'
 
@@ -32,7 +33,8 @@ var router = new Router({
         {path: '/rights', component: Rights},
         {path: '/roles', component: Roles},
         {path: '/goods', component: Goods},
-        {path: '/goods/add', component: GoodsAdd}
+        {path: '/goods/add', component: GoodsAdd},
+        {path: '/categories', component: Categories}
       ]
     }
   ]
