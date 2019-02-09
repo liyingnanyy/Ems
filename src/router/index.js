@@ -5,10 +5,14 @@ import Home from '@/components/page/home.vue'
 import User from '@/components/page/users/users.vue'
 import Rights from '@/components/page/rights/rights.vue'
 import Roles from '@/components/page/roles/roles.vue'
+import Goods from '@/components/page/goods/goods.vue'
+import GoodsAdd from '@/components/page/goods/add.vue'
+
+import { Message } from 'element-ui'
 
 Vue.use(Router)
 
-export default new Router({
+var router = new Router({
   routes: [
     {
       path: '/',
@@ -26,8 +30,27 @@ export default new Router({
       children: [
         {path: '/users', component: User},
         {path: '/rights', component: Rights},
-        {path: '/roles', component: Roles}
+        {path: '/roles', component: Roles},
+        {path: '/goods', component: Goods},
+        {path: '/goods/add', component: GoodsAdd}
       ]
     }
   ]
 })
+
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  if (to.path !== '/login') {
+    var token = window.localStorage.getItem('token')
+    if (!token) {
+      router.push('/login')
+      Message.error('您还没有登录，请登录')
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
